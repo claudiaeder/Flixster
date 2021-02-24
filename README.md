@@ -52,7 +52,7 @@ It was originally difficult to understand how to access the API and convert the 
 - [x] Add a rounded corners for the images using the Glide transformations. (1 point)
 
 ### App Walkthough GIF
-<img src="flixster2" width=250><br>
+<img src="flixster2.gif" width=250><br>
 
 ### Notes
 
