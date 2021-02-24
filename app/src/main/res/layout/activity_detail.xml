@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".models.DetailActivity"
+    tools:context=".DetailActivity"
     android:orientation="vertical"
     android:background="@android:color/black">
 
@@ -16,6 +16,7 @@
 
     <TextView
         android:id="@+id/tvTitle"
+        android:transitionName="title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"

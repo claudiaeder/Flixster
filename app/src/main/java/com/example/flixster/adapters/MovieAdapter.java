@@ -1,9 +1,9 @@
 package com.example.flixster.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,17 +11,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.Transformation;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
+import com.example.flixster.MainActivity;
 import com.example.flixster.R;
-import com.example.flixster.models.DetailActivity;
+import com.example.flixster.DetailActivity;
 import com.example.flixster.models.Movie;
 
 import org.parceler.Parcels;
@@ -91,8 +90,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             else{
                 imageURL = movie.getPosterPath();
             }
-            int radius = 30; // corner radius, higher value = more rounded
-            int margin = 10; // crop margin, set to 0 for corners with no crop
+            int radius = 20; // corner radius, higher value = more rounded
+            int margin = 5; // crop margin, set to 0 for corners with no crop
             Glide.with(context)
                     .load(imageURL)
                     .transform(new RoundedCornersTransformation(radius, margin))
@@ -106,7 +105,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                     Intent i = new Intent(context, DetailActivity.class);
                     i.putExtra("title",movie.getTitle());
                     i.putExtra("movie", Parcels.wrap(movie));
-                    context.startActivity(i);
+                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, tvTitle, ViewCompat.getTransitionName(tvTitle));
+                    context.startActivity(i,options.toBundle());
                 }
             });
         }
